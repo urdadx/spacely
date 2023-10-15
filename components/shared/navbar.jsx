@@ -9,7 +9,7 @@ const Navbar = () => {
       <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
         <nav className="px-2 flex justify-between h-16 items-center lg:container">
           <div className="">
-            <h3 className="font-semibold text-lg italic lg:text-2xl">
+            <h3 className="font-semibold text-xl italic lg:text-2xl">
               spacely 🛸
             </h3>
           </div>

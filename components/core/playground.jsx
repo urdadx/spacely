@@ -5,14 +5,21 @@ import {
   Dribbble,
   Fan,
   Leaf,
+  ShuffleIcon,
   Twitter,
   Waves,
   Zap,
 } from 'lucide-react';
 import { AudioCard } from '../utils/audio-card';
 import { Button } from '../ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '../ui/tooltip';
 
-const moods = [
+const sounds = [
   {
     name: 'Rain',
     icon: (
@@ -87,30 +94,58 @@ const moods = [
   },
 ];
 
+// Presets
+// Focus - ocean, leaves, birds chirp
+// Chilling - Rain, Thunder, Fan
+// Productivity - rain, bird, clock
+
 const Playground = () => {
   return (
     <>
-      <section className="flex justify-center gap-3 max-w-[720px] mt-6 mx-auto lg:justify-start">
-        <Button className="shadow-md rounded-lg text-md" variant="outline">
-          Producitivty
-        </Button>
-        <Button className="shadow-md rounded-lg text-md" variant="outline">
-          Focus
-        </Button>
-        <Button className="shadow-md rounded-lg text-md" variant="outline">
-          Chilling
-        </Button>
+      <section className="flex justify-center items-center max-w-[720px] mt-6 mx-auto lg:justify-between gap-3">
+        <div className="flex gap-3">
+          <Button
+            className="shadow-md rounded-lg text-sm lg:text-md"
+            variant="outline"
+          >
+            Productivity
+          </Button>
+          <Button
+            className="shadow-md rounded-lg text-sm lg:text-md"
+            variant="outline"
+          >
+            Focus
+          </Button>
+          <Button
+            className="shadow-md rounded-lg text-sm lg:text-md"
+            variant="outline"
+          >
+            Chilling
+          </Button>
+        </div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <div className="shadow-md rounded-full p-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+                <ShuffleIcon size="20" />
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Randomize</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </section>
       <section className="flex justify-center max-w-[900px] mx-auto mt-8">
         <div className="grid grid-cols-2 mb-4 gap-4 lg:grid-cols-3 lg:gap-8 lg:mb-14">
-          {moods?.map((mood) => {
+          {sounds?.map((sound) => {
             return (
               <AudioCard
-                key={mood.name}
-                name={mood.name}
-                icon={mood.icon}
-                sound={mood.src}
-                volume={mood.volume}
+                key={sound.name}
+                name={sound.name}
+                icon={sound.icon}
+                sound={sound.src}
+                volume={sound.volume}
               />
             );
           })}
