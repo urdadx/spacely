@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Car,
   Clock,
@@ -5,20 +6,12 @@ import {
   Dribbble,
   Fan,
   Leaf,
-  ShuffleIcon,
   Twitter,
   Waves,
   Zap,
+  ShuffleIcon,
 } from 'lucide-react';
 import { AudioCard } from '../utils/audio-card';
-import { Button } from '../ui/button';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '../ui/tooltip';
-
 const sounds = [
   {
     name: 'Rain',
@@ -94,51 +87,24 @@ const sounds = [
   },
 ];
 
-// Presets
-// Focus - ocean, leaves, birds chirp
-// Chilling - Rain, Thunder, Fan
-// Productivity - rain, bird, clock
-
 const Playground = () => {
+  const [selectedSounds] = useState([]);
+
   return (
     <>
       <section className="flex justify-center items-center max-w-[720px] mt-6 mx-auto lg:justify-between gap-3">
-        <div className="flex gap-3">
-          <Button
-            className="shadow-md rounded-lg text-sm lg:text-md"
-            variant="outline"
-          >
-            Productivity
-          </Button>
-          <Button
-            className="shadow-md rounded-lg text-sm lg:text-md"
-            variant="outline"
-          >
-            Focus
-          </Button>
-          <Button
-            className="shadow-md rounded-lg text-sm lg:text-md"
-            variant="outline"
-          >
-            Chilling
-          </Button>
+        <div className="flex" />
+        <div className="flex items-center gap-3 cursor-pointer">
+          <p>Randomize</p>
+          <div className="shadow-md rounded-full p-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+            <ShuffleIcon size="20" />
+          </div>
         </div>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger>
-              <div className="shadow-md rounded-full p-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
-                <ShuffleIcon size="20" />
-              </div>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Randomize</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
       </section>
       <section className="flex justify-center max-w-[900px] mx-auto mt-8">
         <div className="grid grid-cols-2 mb-4 gap-4 lg:grid-cols-3 lg:gap-8 lg:mb-14">
           {sounds?.map((sound) => {
+            const isSelected = selectedSounds.includes(sound.name);
             return (
               <AudioCard
                 key={sound.name}
@@ -146,6 +112,7 @@ const Playground = () => {
                 icon={sound.icon}
                 sound={sound.src}
                 volume={sound.volume}
+                playPreset={isSelected}
               />
             );
           })}

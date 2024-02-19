@@ -2,8 +2,10 @@ import { Button } from '../ui/button';
 import { UserNav } from '../utils/user-nav';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { FocusPanel } from '../core/focus-panel';
+import { usePomodoroTimer } from '@/hooks/use-pomodoro';
 
 const Navbar = () => {
+  const { formatTime, timeLeft, timerRunning, isSession } = usePomodoroTimer();
   return (
     <>
       <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
@@ -17,8 +19,16 @@ const Navbar = () => {
           <div className="ml-auto flex items-center space-x-4">
             <Sheet>
               <SheetTrigger asChild>
-                <Button className=" font-semibold text-sm lg:text-md">
-                  let me focus 😌
+                <Button
+                  className={`font-semibold text-sm lg:text-md ${
+                    isSession ? 'bg-primary' : 'bg-red-400 hover:bg-red-500'
+                  }`}
+                >
+                  {timerRunning
+                    ? ` ${
+                        isSession ? 'In session😌' : 'On Break😎'
+                      }: ${formatTime(timeLeft)}`
+                    : 'let me focus 😌 '}
                 </Button>
               </SheetTrigger>
               <SheetContent>

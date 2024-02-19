@@ -15,7 +15,7 @@ export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
   };
 
   return (
-    <div className="border bg-card text-card-foreground shadow-sm rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem]">
+    <div className=" border bg-card text-card-foreground shadow-sm rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem]">
       <ReactHowler
         src={sound}
         loop={true}
@@ -24,7 +24,7 @@ export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
         onLoad={handleSoundLoading}
       />
       <div onClick={togglePlay} className="relative w-full">
-        <div className="my-4 text-lg text-center font-semibold lg:text-2xl lg:my-6">
+        <div className="my-4 text-lg text-center font-semibold lg:text-xl lg:my-6">
           {name}
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">

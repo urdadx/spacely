@@ -13,6 +13,14 @@ body {
 /* SCROLL BAR */
 
 /* Hide scrollbar for Chrome, Safari and Opera etc */
+body::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #0575e6;
+}
 .no-scrollbar::-webkit-scrollbar {
   width: 4px !important;
 }
@@ -21,7 +29,6 @@ body {
   border-radius: 10px;
   background-color: #0575e6;
 }
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -71,128 +78,61 @@ body {
 
 /* BORDER ANIMATION*/
 
-.card-button {
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.conic {
   position: relative;
-}
+  z-index: 0;
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 2rem;
 
-.card-button:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 1rem;
-  background: linear-gradient(360deg, #00f260, #0575e6, #e24f80);
-  background-size: 300% 300%;
-  clip-path: polygon(
-    0% 100%,
-    3px 100%,
-    3px 3px,
-    calc(100% - 3px) 3px,
-    calc(100% - 3px) calc(100% - 3px),
-    3px calc(100% - 3px),
-    3px 100%,
-    100% 100%,
-    100% 0%,
-    0% 0%
-  );
-}
-
-.card-button:after {
-  animation: frame-enter 1s forwards ease-in-out reverse,
-    gradient-animation 2s ease-in-out infinite;
-}
-
-/* motion */
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 15% 0%;
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: conic-gradient(
+      transparent,
+      rgba(168, 239, 255, 1),
+      transparent 30%
+    );
+    animation: rotate 4s linear infinite;
   }
 
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    border-radius: 5px;
+  }
+}
+
+.conic-demo::after {
+  animation: opacityChange 5s infinite linear;
+}
+
+@keyframes opacityChange {
   50% {
-    background-position: 85% 100%;
+    opacity: 0.5;
   }
-
   100% {
-    background-position: 15% 0%;
-  }
-}
-
-@keyframes frame-enter {
-  0% {
-    clip-path: polygon(
-      0% 100%,
-      3px 100%,
-      3px 3px,
-      calc(100% - 3px) 3px,
-      calc(100% - 3px) calc(100% - 3px),
-      3px calc(100% - 3px),
-      3px 100%,
-      100% 100%,
-      100% 0%,
-      0% 0%
-    );
-  }
-
-  25% {
-    clip-path: polygon(
-      0% 100%,
-      3px 100%,
-      3px 3px,
-      calc(100% - 3px) 3px,
-      calc(100% - 3px) calc(100% - 3px),
-      calc(100% - 3px) calc(100% - 3px),
-      calc(100% - 3px) 100%,
-      100% 100%,
-      100% 0%,
-      0% 0%
-    );
-  }
-
-  50% {
-    clip-path: polygon(
-      0% 100%,
-      3px 100%,
-      3px 3px,
-      calc(100% - 3px) 3px,
-      calc(100% - 3px) 3px,
-      calc(100% - 3px) 3px,
-      calc(100% - 3px) 3px,
-      calc(100% - 3px) 3px,
-      100% 0%,
-      0% 0%
-    );
-  }
-
-  75% {
-    -webkit-clip-path: polygon(
-      0% 100%,
-      3px 100%,
-      3px 3px,
-      3px 3px,
-      3px 3px,
-      3px 3px,
-      3px 3px,
-      3px 3px,
-      3px 0%,
-      0% 0%
-    );
-  }
-
-  100% {
-    -webkit-clip-path: polygon(
-      0% 100%,
-      3px 100%,
-      3px 100%,
-      3px 100%,
-      3px 100%,
-      3px 100%,
-      3px 100%,
-      3px 100%,
-      3px 100%,
-      0% 100%
-    );
+    opacity: 1;
   }
 }
