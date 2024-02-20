@@ -76,63 +76,18 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+.todo-container {
+  overflow-y: auto;
+  height: 400px;
+  scrollbar-gutter: stable;
+}
+
+.todo-container {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.todo-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
 /* BORDER ANIMATION*/
-
-@keyframes rotate {
-  100% {
-    transform: rotate(1turn);
-  }
-}
-
-.conic {
-  position: relative;
-  z-index: 0;
-  width: 400px;
-  height: 300px;
-  margin: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 2rem;
-
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -2;
-    left: -50%;
-    top: -50%;
-    width: 200%;
-    height: 200%;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-image: conic-gradient(
-      transparent,
-      rgba(168, 239, 255, 1),
-      transparent 30%
-    );
-    animation: rotate 4s linear infinite;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    left: 6px;
-    top: 6px;
-    width: calc(100% - 12px);
-    height: calc(100% - 12px);
-    border-radius: 5px;
-  }
-}
-
-.conic-demo::after {
-  animation: opacityChange 5s infinite linear;
-}
-
-@keyframes opacityChange {
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}

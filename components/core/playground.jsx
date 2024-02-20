@@ -92,16 +92,16 @@ const Playground = () => {
 
   return (
     <>
-      <section className="flex justify-center items-center max-w-[720px] mt-6 mx-auto lg:justify-between gap-3">
+      <section className="flex justify-center items-center max-w-[720px] mt-4 lg:mt-6 mx-auto lg:justify-between gap-3">
         <div className="flex" />
-        <div className="flex items-center gap-3 cursor-pointer">
+        <div className="flex items-center gap-2 cursor-pointer">
           <p>Randomize</p>
           <div className="shadow-md rounded-full p-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
-            <ShuffleIcon size="20" />
+            <ShuffleIcon className="w-4 h-4" />
           </div>
         </div>
       </section>
-      <section className="flex justify-center max-w-[900px] mx-auto mt-8">
+      <section className="flex justify-center max-w-[900px] mx-auto mt-4 lg:mt-8">
         <div className="grid grid-cols-2 mb-4 gap-4 lg:grid-cols-3 lg:gap-8 lg:mb-14">
           {sounds?.map((sound) => {
             const isSelected = selectedSounds.includes(sound.name);

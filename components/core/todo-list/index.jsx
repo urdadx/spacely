@@ -64,24 +64,27 @@ export const TodoList = () => {
           </div>
         </div>
       )}
-      {items.length > 0 ? (
-        items.map((item, index) => {
-          return (
-            <>
-              <Todo
-                key={index}
-                id={index}
-                task={item}
-                deleteItem={deleteItem}
-              />
-            </>
-          );
-        })
-      ) : (
-        <div className="flex justify-center mt-10 text-blue-500 font-semibold italic">
-          <p className="text-md">Wow. such an empty list!🤭</p>
-        </div>
-      )}
+      <div className="todo-container">
+        {items.length > 0 ? (
+          items.map((item, index) => {
+            return (
+              <>
+                <Todo
+                  key={index}
+                  id={index}
+                  task={item.task}
+                  deleteItem={deleteItem}
+                />
+              </>
+            );
+          })
+        ) : (
+          <div className="flex justify-center mt-10 text-blue-500 font-semibold italic">
+            <p className="text-md">Wow. such an empty list!🤭</p>
+          </div>
+        )}
+      </div>
+      <div className="h-[100px]" />
     </div>
   );
 };

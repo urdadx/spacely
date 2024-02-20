@@ -8,8 +8,9 @@ export const useLocalStorage = (key) => {
     setItems(storedItems ? JSON.parse(storedItems) : []);
   }, [key]);
 
-  const addItem = (item) => {
-    const updatedItems = [...items, item];
+  const addItem = (task) => {
+    const newItem = { task, isCompleted: false };
+    const updatedItems = [...items, newItem];
     localStorage.setItem(key, JSON.stringify(updatedItems));
     setItems(updatedItems);
   };
@@ -17,12 +18,22 @@ export const useLocalStorage = (key) => {
   const deleteItem = (index) => {
     const updatedItems = items.filter((_, i) => i !== index);
     localStorage.setItem(key, JSON.stringify(updatedItems));
-    setItems(updatedItems); 
+    setItems(updatedItems);
   };
 
-  const updateItem = (index, newItem) => {
+  const updateItem = (index, newTask) => {
     const updatedItems = [...items];
-    updatedItems[index] = newItem;
+    updatedItems[index] = {
+      task: newTask,
+      isCompleted: updatedItems[index].isCompleted,
+    };
+    localStorage.setItem(key, JSON.stringify(updatedItems));
+    setItems(updatedItems);
+  };
+
+  const checkCompleted = (index) => {
+    const updatedItems = [...items];
+    updatedItems[index].isCompleted = !updatedItems[index].isCompleted;
     localStorage.setItem(key, JSON.stringify(updatedItems));
     setItems(updatedItems);
   };
@@ -32,5 +43,12 @@ export const useLocalStorage = (key) => {
     setItems([]);
   };
 
-  return { items, addItem, deleteItem, updateItem, clearStorage };
+  return {
+    items,
+    addItem,
+    deleteItem,
+    updateItem,
+    clearStorage,
+    checkCompleted,
+  };
 };
