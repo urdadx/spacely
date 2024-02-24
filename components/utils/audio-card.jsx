@@ -15,7 +15,11 @@ export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
   };
 
   return (
-    <div className=" border bg-card text-card-foreground shadow-sm rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem]">
+    <div
+      className={`${
+        isPlaying ? 'border-animation' : ''
+      } border bg-card text-card-foreground shadow-sm rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem]`}
+    >
       <ReactHowler
         src={sound}
         loop={true}

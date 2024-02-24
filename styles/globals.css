@@ -91,3 +91,27 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* BORDER ANIMATION*/
+@property --angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.border-animation {
+  --angle: 0deg;
+  background: linear-gradient(white, white) padding-box,
+    conic-gradient(from var(--angle), #dfdfdf, #0575e6) border-box;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  max-width: 400px;
+  animation: rotate-gradient 3s infinite linear;
+}
+
+@keyframes rotate-gradient {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}

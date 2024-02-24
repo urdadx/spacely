@@ -1,7 +1,13 @@
 import { Checkbox } from '@/components/ui/checkbox';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Pencil } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLocalStorage } from '@/hooks/use-local-storage';
+import { ThreeDots } from '@/components/utils/three-dots';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 
 export const Todo = ({ task, id, deleteItem }) => {
   const { checkCompleted, items } = useLocalStorage('my-tasks');
@@ -33,9 +39,27 @@ export const Todo = ({ task, id, deleteItem }) => {
               {task}
             </h3>
           </div>
-          <div onClick={handleDeleteTask} className="flex items-center">
-            <Trash2 className="rounded-2xl text-red-400 w-[17px] h-[17px] hover:text-red-500" />
-          </div>
+          <Popover className="flex items-center ">
+            <PopoverTrigger>
+              <ThreeDots />
+            </PopoverTrigger>
+            <PopoverContent className="w-[150px] h-auto p-2">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-700">Edit</span>
+                  <Pencil className="rounded-2xl text-gray-600 w-[15px] h-[15px] hover:text-red-500" />
+                </div>
+
+                <div
+                  onClick={handleDeleteTask}
+                  className="flex items-center justify-between"
+                >
+                  <span className="text-sm text-red-400">Delete</span>
+                  <Trash2 className="rounded-2xl text-red-400 w-[15px] h-[15px] hover:text-red-500" />
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </>

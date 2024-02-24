@@ -1,24 +1,16 @@
-const ThreeDots = () => {
+export const ThreeDots = (props) => {
   return (
-    <>
-      <svg
-        fill="none"
-        shapeRendering="geometricPrecision"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        width="14"
-        height="14"
-        className="h-5 w-5 text-gray-500 top-1/2  -translate-x-1/2 -translate-y-1/2 lg:left-[97%] md:left-[97%]"
-      >
-        <circle cx="12" cy="12" r="1"></circle>
-        <circle cx="12" cy="5" r="1"></circle>
-        <circle cx="12" cy="19" r="1"></circle>
-      </svg>
-    </>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="0.44em"
+      height="1em"
+      viewBox="0 0 7 16"
+      className="text-gray-600"
+      {...props}
+    >
+      <circle cx={3.5} cy={3.5} r={1.5} fill="currentColor"></circle>
+      <circle cx={3.5} cy={8.5} r={1.5} fill="currentColor"></circle>
+      <circle cx={3.5} cy={13.5} r={1.5} fill="currentColor"></circle>
+    </svg>
   );
 };
-
-export default ThreeDots;
