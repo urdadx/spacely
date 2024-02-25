@@ -5,7 +5,6 @@ import { FocusPanel } from '../core/focus-panel';
 import { usePomodoroTimer } from '@/hooks/use-pomodoro';
 import useMediaQuery from '@/hooks/use-media-query';
 import { GithubIcon } from 'lucide-react';
-import { Drawer } from 'vaul';
 
 const Navbar = () => {
   const { formatTime, timeLeft, timerRunning, isSession } = usePomodoroTimer();

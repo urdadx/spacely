@@ -1,14 +1,18 @@
 import Playground from '../core/playground';
 import Navbar from './navbar';
+import useMediaQuery from '@/hooks/use-media-query';
 
 const Layout = () => {
+  const { isTablet } = useMediaQuery();
   return (
-    <main className="w-[100vw] h-full bg-[#F7F7FA]">
-      <Navbar />
-      <Playground />
-      <div className=" bg-white flex justify-center items-center">
-        <p className="font-semibold text-lg my-5">
-          Made by{' '}
+    <>
+      <section className={`${isTablet && 'h-screen'} bg-[#f8f8fa]`}>
+        <Navbar />
+        <Playground />
+      </section>
+      <section className="bg-white flex justify-center items-center border-t border-gray-200">
+        <p className="font-semibold text-lg my-5 text-center">
+          Made by
           <a
             className="text-blue-800"
             target="_blank"
@@ -17,8 +21,8 @@ const Layout = () => {
             @urdadx
           </a>
         </p>
-      </div>
-    </main>
+      </section>
+    </>
   );
 };
 

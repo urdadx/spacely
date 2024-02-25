@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
 
 export const useLocalStorage = (key) => {
   const [items, setItems] = useState([]);
+  const id = nanoid(10);
 
   useEffect(() => {
     const storedItems = localStorage.getItem(key);
@@ -9,7 +11,7 @@ export const useLocalStorage = (key) => {
   }, [key]);
 
   const addItem = (task) => {
-    const newItem = { task, isCompleted: false };
+    const newItem = { id: id, task, isCompleted: false };
     const updatedItems = [...items, newItem];
     localStorage.setItem(key, JSON.stringify(updatedItems));
     setItems(updatedItems);
@@ -46,6 +48,7 @@ export const useLocalStorage = (key) => {
   return {
     items,
     addItem,
+    setItems,
     deleteItem,
     updateItem,
     clearStorage,

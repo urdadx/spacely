@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { Howl } from 'howler';
 
 export const usePomodoroTimer = create((set) => ({
   sessionLength: 25,
@@ -43,6 +44,10 @@ export const usePomodoroTimer = create((set) => ({
         const intervalId = setInterval(() => {
           set((state) => {
             if (state.timeLeft === 0) {
+              const sound = new Howl({
+                src: ['/sounds/alarm.mp3'],
+              });
+              sound.play();
               return {
                 ...state,
                 isSession: !state.isSession,
