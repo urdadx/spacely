@@ -7,49 +7,14 @@ import { useLocalStorage } from '@/hooks/use-local-storage';
 import { toast } from 'sonner';
 import useMediaQuery from '@/hooks/use-media-query';
 import { motion } from 'framer-motion';
-import {
-  DndContext,
-  closestCenter,
-  MouseSensor,
-  TouchSensor,
-  KeyboardSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 export const TodoList = () => {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [task, setTask] = useState('');
 
   // uselocalstorage functions
-  const { items, addItem, deleteItem, setItems } = useLocalStorage('my-tasks');
-
+  const { items, addItem, deleteItem } = useLocalStorage('my-tasks');
   const { isMobile } = useMediaQuery();
-
-  // drag and drop
-  const mouseSensor = useSensor(MouseSensor);
-  const touchSensor = useSensor(TouchSensor);
-  const keyboardSensor = useSensor(KeyboardSensor);
-
-  const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
-
-  const handleDragEnd = ({ active, over }) => {
-    if (active.id !== over.id) {
-      setItems((prevItems) => {
-        const oldIndex = prevItems.findIndex((item) => item.id === active.id);
-        const newIndex = prevItems.findIndex((item) => item.id === over.id);
-        const newItems = [...prevItems];
-        newItems.splice(oldIndex, 1);
-        newItems.splice(newIndex, 0, prevItems[oldIndex]);
-        return newItems;
-      });
-    }
-  };
 
   const handleSubmitTask = () => {
     if (!task || task.trim() === '') {
@@ -80,6 +45,7 @@ export const TodoList = () => {
               Cancel
             </Button>
             <Button
+              type="submit"
               onClick={handleSubmitTask}
               className="bg-blue-500 w-[70px] text-white mt-2 p-2 rounded-md text-sm hover:font-bold"
             >
@@ -103,40 +69,30 @@ export const TodoList = () => {
         </div>
       )}
       <div className={`${isMobile && 'todo-container'}`}>
-        {/* <DndContext
-          sensors={sensors}
-          collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}
-          modifiers={[restrictToVerticalAxis]}
-        >
-          <SortableContext
-            items={items.map((item) => item.id)}
-            strategy={verticalListSortingStrategy}
-          > */}
         {items.length > 0 ? (
-          items.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Todo
-                id={item.id}
-                index={index}
-                task={item.task}
-                deleteItem={deleteItem}
-              />
-            </motion.div>
-          ))
+          items.map((item, index) => {
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Todo
+                  key={index}
+                  index={index}
+                  task={item.task}
+                  deleteItem={deleteItem}
+                />
+              </motion.div>
+            );
+          })
         ) : (
           <div className="flex justify-center mt-10 text-blue-500 font-semibold italic">
-            <p className="text-md">Wow. such an empty list!🤭</p>
+            <p className="text-md">Wow... such an empty list!🤭</p>
           </div>
         )}
-        {/* </SortableContext>
-        </DndContext> */}
       </div>
       <div className="h-[40px]" />
     </div>

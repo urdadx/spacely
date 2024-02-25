@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Car,
   Clock,
@@ -54,20 +54,20 @@ export const sounds = [
     src: '/sounds/clock.mp3',
   },
   {
-    name: 'Traffic Jam',
-    icon: (
-      <Car className="w-[50px] h-[50px] text-gray-500 lg:w-[80px] lg:h-[80px]" />
-    ),
-    volume: 0.2,
-    src: '/sounds/traffic.mp3',
-  },
-  {
     name: 'Ocean',
     icon: (
       <Waves className="w-[50px] h-[50px] text-gray-500 lg:w-[80px] lg:h-[80px]" />
     ),
     volume: 0.2,
     src: '/sounds/waves.mp3',
+  },
+  {
+    name: 'Traffic Jam',
+    icon: (
+      <Car className="w-[50px] h-[50px] text-gray-500 lg:w-[80px] lg:h-[80px]" />
+    ),
+    volume: 0.2,
+    src: '/sounds/traffic.mp3',
   },
   {
     name: 'Stadium',
@@ -101,12 +101,6 @@ const Playground = () => {
           </p>
         </div>
         <div />
-        {/* <div className="flex items-center gap-2 cursor-pointer">
-          <p>Randomize</p>
-          <div className="shadow-md rounded-full p-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
-            <ShuffleIcon className="w-4 h-4" />
-          </div>
-        </div> */}
       </section>
       <section className="flex justify-center max-w-[900px] mx-auto mt-4 lg:mt-8">
         <div className="grid grid-cols-2 mb-4 gap-4 lg:grid-cols-3 md:grid-cols-3 lg:gap-8 lg:mb-14">

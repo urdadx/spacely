@@ -45,7 +45,7 @@ export const usePomodoroTimer = create((set) => ({
           set((state) => {
             if (state.timeLeft === 0) {
               const sound = new Howl({
-                src: ['/sounds/alarm.mp3'],
+                src: ['/sounds/alarm-sound.mp3'],
               });
               sound.play();
               return {
