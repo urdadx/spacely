@@ -8,8 +8,6 @@ Official site: [https://spacely.vercel.app](https://spacely.vercel.app)
 
 ## ⚒️ Demo
 
-Create and customize your link in bio in minutes✨
-
 <div style="width: 600px;">
 
 ![Spacely Demo](.github/demo.gif)
