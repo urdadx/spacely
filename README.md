@@ -10,7 +10,10 @@ Official site: [https://spacely.vercel.app](https://spacely.vercel.app)
 
 <div style="width: 600px;">
 
-![Spacely Demo](.github/demo.gif)
+
+https://github.com/urdadx/spacely/assets/70736338/654c1a7d-987a-40fc-9ee3-f2282294a13f
+
+
 
 </div>
 
