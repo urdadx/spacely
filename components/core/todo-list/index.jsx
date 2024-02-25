@@ -70,18 +70,18 @@ export const TodoList = () => {
       )}
       <div className={`${isMobile && 'todo-container'}`}>
         {items.length > 0 ? (
-          items.map((item, index) => {
+          items.map((item) => {
             return (
               <motion.div
-                key={index}
+                key={item.id}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
                 <Todo
-                  key={index}
-                  index={index}
+                  key={item.id}
+                  id={item.id}
                   task={item.task}
                   deleteItem={deleteItem}
                 />
