@@ -3,13 +3,14 @@ import { Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useLocalStorage } from '@/hooks/use-local-storage';
 
-export const Todo = ({ task, index, deleteItem }) => {
+export const Todo = ({ task, id, deleteItem }) => {
   const { checkCompleted, items } = useLocalStorage('my-tasks');
 
-  const isCompleted = items?.[index]?.isCompleted;
+  const isCompleted =
+    items.find((item) => item.id === id)?.isCompleted ?? false;
 
   const handleDeleteTask = () => {
-    deleteItem(index);
+    deleteItem(id);
     toast.info('Task deleted successfully');
   };
 
@@ -20,7 +21,7 @@ export const Todo = ({ task, index, deleteItem }) => {
           <div className="flex items-center gap-2">
             <div className="flex items-center">
               <Checkbox
-                onCheckedChange={() => checkCompleted(index)}
+                onCheckedChange={() => checkCompleted(id)}
                 checked={isCompleted}
                 className="rounded-xl w-[17px] h-[17px]"
               />
