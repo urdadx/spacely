@@ -13,7 +13,8 @@ export const TodoList = () => {
   const [task, setTask] = useState('');
 
   // uselocalstorage functions
-  const { items, addItem, deleteItem } = useLocalStorage('my-tasks');
+  const { items, addItem, deleteItem, checkCompleted } =
+    useLocalStorage('my-tasks');
   const { isMobile } = useMediaQuery();
 
   const handleSubmitTask = () => {
@@ -83,7 +84,9 @@ export const TodoList = () => {
                   key={item.id}
                   id={item.id}
                   task={item.task}
-                  deleteItem={deleteItem}
+                  isCompleted={item.isCompleted}
+                  onCheck={checkCompleted}
+                  onDelete={deleteItem}
                 />
               </motion.div>
             );
@@ -94,7 +97,7 @@ export const TodoList = () => {
           </div>
         )}
       </div>
-      <div className="h-[40px]" />
+      <div className={isMobile ? 'h-[200px]' : 'h-[80px]'} />
     </div>
   );
 };

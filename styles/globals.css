@@ -78,7 +78,7 @@ body::-webkit-scrollbar-thumb {
 
 .todo-container {
   overflow-y: auto;
-  height: 400px;
+  height: 420px;
   scrollbar-gutter: stable;
 }
 
