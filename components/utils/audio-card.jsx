@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Slider } from '../ui/slider';
 import ReactHowler from 'react-howler';
+import { toast } from 'sonner';
 
 export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -10,22 +11,21 @@ export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
     setIsPlaying((prevIsPlaying) => !prevIsPlaying);
   };
 
-  const handleSoundLoading = () => {
-    console.log('loading sound');
-  };
-
   return (
     <div
       className={`${
         isPlaying ? 'border-animation' : ''
-      } border bg-card text-card-foreground shadow-sm rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem]`}
+      } border bg-card text-card-foreground shadow-md rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem]`}
     >
       <ReactHowler
+        preload={true}
         src={sound}
         loop={true}
         playing={isPlaying}
         volume={volume}
-        onLoad={handleSoundLoading}
+        onLoadError={() => {
+          toast.info('An error occured while loading the sound');
+        }}
       />
       <div onClick={togglePlay} className="relative w-full">
         <div className="my-4 text-lg text-center font-semibold lg:text-xl lg:my-6">
