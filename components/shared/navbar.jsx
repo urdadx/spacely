@@ -5,6 +5,7 @@ import { FocusPanel } from '../core/focus-panel';
 import { usePomodoroTimer } from '@/hooks/use-pomodoro';
 import useMediaQuery from '@/hooks/use-media-query';
 import { GithubIcon } from 'lucide-react';
+import { ModeToggle } from '../ui/mode-toggle';
 
 const Navbar = () => {
   const { formatTime, timeLeft, timerRunning, isSession } = usePomodoroTimer();
@@ -41,12 +42,13 @@ const Navbar = () => {
             </Sheet>
             {!isMobile && (
               <Link target="_blank" href="https://github.com/urdadx/spacely">
-                <Button className="font-medium bg-transparent text-sm lg:text-md flex items-center gap-2 hover:bg-gray-100 text-slate-900 border-2">
+                <Button className="font-medium bg-transparent dark:bg-foreground text-sm lg:text-md flex items-center gap-2 hover:bg-gray-100 text-slate-900 border-2">
                   <GithubIcon className="w-4 h-4" />
                   Star on Github
                 </Button>
               </Link>
             )}
+          <ModeToggle />
           </div>
         </nav>
       </header>
