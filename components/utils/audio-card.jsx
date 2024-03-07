@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Slider } from '../ui/slider';
 import ReactHowler from 'react-howler';
 import { toast } from 'sonner';
+import { clsx } from 'clsx';
 
 export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -28,7 +29,12 @@ export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
         }}
       />
       <div onClick={togglePlay} className="relative w-full">
-        <div className="my-4 text-lg text-center font-semibold lg:text-xl lg:my-6">
+        <div
+          className={clsx(
+            'my-4 text-lg text-center font-semibold lg:text-xl lg:my-6 ',
+            isPlaying ? 'dark:text-primary' : 'dark:text-foreground'
+          )}
+        >
           {name}
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">
