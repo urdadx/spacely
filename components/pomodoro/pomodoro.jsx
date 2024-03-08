@@ -50,7 +50,7 @@ export const Pomodoro = () => {
             <div className="flex items-center justify-center space-x-1 ">
               <span
                 onClick={handleDecreaseTimerLength}
-                className=" flex justify-center cursor-pointer font-bold items-center rounded-full hover:bg-gray-100 p-3"
+                className=" flex justify-center cursor-pointer font-bold items-center rounded-full hover:bg-gray-100 p-3 dark:hover:bg-primary/10"
               >
                 <Minus className="h-4 w-4" />
                 <span className="text-lg">5</span>
@@ -73,7 +73,7 @@ export const Pomodoro = () => {
               </div>
               <span
                 onClick={handleIncreaseTimerLength}
-                className="flex justify-center items-center cursor-pointer font-bold rounded-full hover:bg-gray-100 p-3"
+                className="flex justify-center items-center cursor-pointer font-bold rounded-full hover:bg-gray-100 p-3 dark:hover:bg-primary/10"
               >
                 <Plus className="h-4 w-4" />
                 <span className="text-lg">5</span>

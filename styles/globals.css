@@ -97,9 +97,20 @@ body::-webkit-scrollbar-thumb {
   initial-value: 0deg;
 }
 
-.border-animation {
+
+.border-animation-light {
   --angle: 0deg;
   background: linear-gradient(white, white) padding-box,
+    conic-gradient(from var(--angle), #dfdfdf, #0575e6) border-box;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  max-width: 400px;
+  animation: rotate-gradient 3s infinite linear;
+}
+
+.border-animation-dark {
+  --angle: 0deg;
+  background: linear-gradient(#000a14, #000a14) padding-box,
     conic-gradient(from var(--angle), #dfdfdf, #0575e6) border-box;
   border: 2px solid transparent;
   border-radius: 16px;
