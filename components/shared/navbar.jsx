@@ -13,7 +13,7 @@ const Navbar = () => {
   const { isMobile } = useMediaQuery();
   return (
     <>
-      <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+      <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b dark:border-muted bg-background/95 backdrop-blur">
         <nav className="px-2 flex justify-between h-16 items-center lg:container">
           <div className="">
             <h3 className="font-semibold text-xl italic lg:text-2xl">
@@ -25,7 +25,7 @@ const Navbar = () => {
             <Sheet>
               <SheetTrigger asChild>
                 <Button
-                  className={`font-semibold text-sm lg:text-md ${
+                  className={`font-semibold text-sm lg:text-md dark:text-white ${
                     isSession ? 'bg-primary' : 'bg-red-400 hover:bg-red-500'
                   }`}
                 >
@@ -42,13 +42,13 @@ const Navbar = () => {
             </Sheet>
             {!isMobile && (
               <Link target="_blank" href="https://github.com/urdadx/spacely">
-                <Button className="font-medium bg-transparent dark:bg-foreground text-sm lg:text-md flex items-center gap-2 hover:bg-gray-100 text-slate-900 border-2">
+                <Button className="font-medium bg-transparent  dark:bg-background dark:text-white text-sm lg:text-md flex items-center gap-2 hover:bg-gray-100 text-slate-900 border-2 dark:border">
                   <GithubIcon className="w-4 h-4" />
                   Star on Github
                 </Button>
               </Link>
             )}
-          <ModeToggle />
+            <ModeToggle />
           </div>
         </nav>
       </header>

@@ -10,11 +10,11 @@ const Layout = () => {
         <Navbar />
         <Playground />
       </section>
-      <section className=" dark:bg-background flex justify-center items-center border-t border-gray-200">
+      <section className=" dark:bg-background flex justify-center items-center border-t border-gray-200 dark:border-muted">
         <p className="font-semibold text-lg my-5 text-center">
           Made by
           <a
-            className="text-blue-800"
+            className="text-blue-800 dark:text-blue-400"
             target="_blank"
             href="https://x.com/NerdyProgramme2"
           >

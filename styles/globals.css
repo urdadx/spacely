@@ -54,11 +54,12 @@ body::-webkit-scrollbar-thumb {
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --darkbackground: 240 10% 3.9%;
+    --background: 240 10% 3.9%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 240 10% 3.9%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 210 40% 98%;
     --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 47.4% 11.2%;
@@ -96,7 +97,6 @@ body::-webkit-scrollbar-thumb {
   inherits: true;
   initial-value: 0deg;
 }
-
 
 .border-animation-light {
   --angle: 0deg;

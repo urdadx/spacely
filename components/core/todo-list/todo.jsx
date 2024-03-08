@@ -10,7 +10,7 @@ export const Todo = ({ id, task, isCompleted, onCheck, onDelete }) => {
 
   return (
     <>
-      <div className="px-3 py-[1.8rem] rounded-lg mb-2 border shadow-md border-primary-foreground h-[80px] w-full items-center cursor-pointer">
+      <div className="px-3 py-[1.8rem] rounded-lg mb-2 border shadow-md border-primary-foreground h-[80px] w-full items-center cursor-pointer dark:border-gray-600">
         <div className="flex justify-between items-center gap-2">
           <div className="flex items-center gap-2">
             <div className="flex items-center">

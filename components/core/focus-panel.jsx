@@ -18,7 +18,7 @@ export const FocusPanel = () => {
   const greeting = greetUser();
 
   return (
-    <div className="h-full">
+    <div className="h-full ">
       <SheetHeader className="my-4">
         <SheetTitle>{greeting && greeting}😇</SheetTitle>
       </SheetHeader>

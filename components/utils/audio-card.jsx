@@ -17,10 +17,8 @@ export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
     <div
       className={`${
         isPlaying && theme === 'light' ? 'border-animation-light' : ''
-      } ${
-        isPlaying && theme === 'dark' ? 'border-animation-dark' : ''
-      }
-       border text-card-foreground shadow-md rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem] dark:bg-primary/10 `}
+      } ${isPlaying && theme === 'dark' ? 'border-animation-dark' : ''}
+       border dark:border-2-muted text-card-foreground shadow-md rounded-2xl cursor-pointer w-[160px] lg:w-[220px] h-[10rem] lg:h-[14.2rem] dark:bg-background`}
     >
       <ReactHowler
         preload={true}
@@ -35,13 +33,12 @@ export const AudioCard = ({ name, icon, sound, volume: initialVolume }) => {
       <div onClick={togglePlay} className="relative w-full ">
         <div
           className={clsx(
-            'my-4 text-lg text-center font-semibold lg:text-xl lg:my-6 ',
-            isPlaying ? 'dark:text-primary' : 'dark:text-foreground'
+            'my-4 text-lg text-center font-semibold lg:text-xl lg:my-6 dark:text-gray-300'
           )}
         >
           {name}
         </div>
-        <div className="flex flex-col gap-4 justify-center items-center">
+        <div className="flex flex-col gap-4 justify-center items-center ">
           <span>{icon}</span>
         </div>
       </div>

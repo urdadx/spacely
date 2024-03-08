@@ -57,7 +57,7 @@ export const TodoList = () => {
       ) : (
         <div
           onClick={() => setIsInputVisible(true)}
-          className="h-[85px] cursor-pointer bg-[#f8f8fa] flex justify-center rounded-lg my-4 w-full p-4 border-2 border-gray-400 border-dashed hover:bg-[#eee]"
+          className="h-[85px] cursor-pointer bg-[#f8f8fa] flex justify-center rounded-lg my-4 w-full p-4 border-2 border-gray-400 border-dashed hover:bg-[#eee] dark:bg-background"
         >
           <div className="flex flex-col justify-center mx-auto">
             <div className="w-[30px] mx-auto">
